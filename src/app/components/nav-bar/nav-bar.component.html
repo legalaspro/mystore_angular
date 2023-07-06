@@ -1,0 +1,14 @@
+<div class="header">
+    <h1>MyStore</h1>
+    <div class="nav-links">
+        <a class="nav-link btn btn-link" routerLink="/">Product List</a>
+        <a class="nav-link btn btn-link" routerLink="/cart">Cart 🛒</a>
+
+        <button class="btn btn-primary" *ngIf="(auth.isAuthenticated$ | async) === false" (click)="auth.loginWithRedirect()">Login</button>
+        <button class="btn btn-danger" *ngIf="auth.isAuthenticated$ | async" (click)="auth.logout()">Logout</button>
+
+        <span *ngIf="auth.user$ | async as user" class="user-greeting">
+            Welcome, {{ user.name }}!
+        </span>
+    </div>
+</div>

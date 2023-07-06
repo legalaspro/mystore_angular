@@ -1,0 +1,24 @@
+<div *ngIf="loading">Loading product details...</div>
+
+
+<div *ngIf="!loading && product" class="detail-container">
+    <img [src]="product.url" alt="{{product.name}}">
+    <div class="detail-item">
+      <h2>{{product.name}}</h2>
+      <p>{{product.price | currency:'USD':true }}</p>
+      <p>{{product.description}}</p>
+      <div class="mb-2">
+        <select class="select-input custom-select" [(ngModel)]="quantity">
+            <option *ngFor="let num of [].constructor(10) let i = index" [value]="i+1">{{i+1}}</option>
+        </select>
+      </div>
+      <div class="mb-2">
+        <button class="btn btn-primary" (click)="addToCart()">Add to cart</button>
+      </div>
+      <a class="back-link" routerLink="/"><-Back to Product List</a>
+    </div>
+</div>
+
+<div *ngIf="!loading && product === undefined" class="detail-container">
+    Product not found.
+</div>
