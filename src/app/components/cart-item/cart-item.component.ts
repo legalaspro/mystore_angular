@@ -13,11 +13,13 @@ export class CartItemComponent {
 
   constructor(private cartService:CartService) {}
 
-  updateQuantity():void {
-    this.cartService.updateCartItemQuantity(this.cartItem.product, this.cartItem.quantity);
-    if(this.cartItem.quantity == 0) {
+  updateQuantity(newQuantity: number):void {
+    this.cartService.updateCartItemQuantity(this.cartItem.product, newQuantity);
+    if(newQuantity == 0) {
       alert('Removed from cart!');
       this.hideCartItem.emit(this.cartItem);
+    } else {
+      this.cartItem.quantity = newQuantity
     }
   }
 }

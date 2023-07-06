@@ -3,7 +3,7 @@
     <div class="cart-item-details">
       <h3>{{cartItem.product.name}}</h3>
       <p>Price: {{cartItem.product.price | currency:'USD':true }}</p>
-      <select class="number-input custom-select form-margin" [(ngModel)]="cartItem.quantity" (change)="updateQuantity()">
+      <select class="number-input custom-select form-margin" [ngModel]="cartItem.quantity" (ngModelChange)="updateQuantity($event)">
         <option *ngFor="let num of [].constructor(11) let i = index" [value]="i">{{i}}</option>
       </select>
     </div>
